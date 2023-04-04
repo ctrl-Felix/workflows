@@ -45,8 +45,8 @@ loop = asyncio.get_event_loop()
 for result in results:
     cache.append(result["full_domain"])
 
-    if len(cache) > 20:
-        cached_fnc.append(process_queue(cache))
+    if len(cache) > 100:
+        cached_fnc.append(process_queue(cache, result_file))
         cache = []
     if len(cached_fnc) > 7:
         f = asyncio.gather(*cached_fnc)
